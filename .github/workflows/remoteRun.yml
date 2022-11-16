@@ -29,4 +29,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: List folder
         run: ls -a
+        
+      - name: Run Collection
+        run: newman run "./Trello.postman_collection.json"
 
