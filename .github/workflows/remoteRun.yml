@@ -40,5 +40,5 @@ jobs:
         run: |
           git add \*.html,
           git commit -m "new html report",
-          git push
+          git push.
 
