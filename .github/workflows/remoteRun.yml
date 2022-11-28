@@ -36,9 +36,9 @@ jobs:
       - name: List folder
         run: ls -a
       
-      - name: Git push
-        run: |
-          git add \*.html,
-          git commit -m "new html report",
-          git push.
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: htmlreport
+          path: path/**/[abc]rtifac?/*
 
