@@ -6,7 +6,7 @@ name: collectionRun with XML
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   schedule:
-    - cron: '19 5 * * 1-5'
+    - cron: '30 3 * * 1-5'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -23,13 +23,15 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       
-      - uses: szenius/set-timezone@v1.0
-        with:
-          timezoneLinux: "Russia/Moscow"
-        
-      - name: version newman
-        run: newman -v
+      - name: Install XML reporter
+        run: npm install -g newman-reporter-xunit
 
       # Runs a set of commands using the runners shell
       - name: Run postman collection
         run: newman run Trello.postman_collection.json --reporters cli 
+        
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: xmlreport
+          path: "*.xml"
