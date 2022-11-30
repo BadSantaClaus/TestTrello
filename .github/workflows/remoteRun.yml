@@ -31,7 +31,7 @@ jobs:
         run: npm install -g newman-reporter-htmlextra
         
       - name: Run Collection
-        run: newman run "./Trello.postman_collection.json" -r htmlextra --reporter-htmlextra-export "./"
+        run: newman run https://api.getpostman.com/collections/7f84364f-cf68-4e21-a6e8-4fff33b385d9?apikey=PMAK-62b558522fc64d315bea82d3-2e85006da9b94b513164f9a259a0c866a4 -r htmlextra --reporter-htmlextra-export
       
       - name: List folder
         run: ls -a
