@@ -30,11 +30,11 @@ jobs:
       - name: Install Htmlextra reporter
         run: npm install i -g newman-reporter-htmlextra
         
-      - name: Run Collection from repository with report 
-        run: newman run Trello.postman_collection.json -r htmlextra --reporter-htmlextra-export "./" 
-        
       - name: Run Collection from postman API with CLI
         run: newman run https://api.getpostman.com/collections/7f84364f-cf68-4e21-a6e8-4fff33b385d9?apikey=PMAK-62b558522fc64d315bea82d3-c35f7be4212b36f2bf7709a9e1e55baada
+        
+      - name: Run Collection from repository with report 
+        run: newman run Trello.postman_collection.json -r htmlextra --reporter-htmlextra-export "./" 
       
       - name: List folder
         run: ls -a
