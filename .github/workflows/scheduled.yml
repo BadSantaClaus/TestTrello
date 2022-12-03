@@ -1,0 +1,35 @@
+# This is a basic workflow to help you get started with Actions
+
+name: collectionRun with XML
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  schedule:
+    - cron: '30 3 * * 1-5'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      
+      - name: Install XML reporter
+        run: npm install -g newman-reporter-xunit
+
+      # Runs a set of commands using the runners shell
+      - name: Run postman collection using API
+        run: newman run https://api.getpostman.com/collections/7f84364f-cf68-4e21-a6e8-4fff33b385d9?apikey=PMAK-62b558522fc64d315bea82d3-c35f7be4212b36f2bf7709a9e1e55baada -r junit --reporter-junit-export "./"
+        
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: xmlreport
+          path: "*.xml"
