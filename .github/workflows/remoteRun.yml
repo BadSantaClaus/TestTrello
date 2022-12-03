@@ -14,7 +14,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  test: 
+  test_with_CLI: 
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -31,14 +31,22 @@ jobs:
         run: npm install -g newman-reporter-htmlextra
         
       - name: Run Collection with CLI
-        run: newman run Trello.postman_collection.json -r htmlextra --reporter-htmlextra-export "./"
+        run: newman run Trello.postman_collection.json -r htmlextra --reporter-htmlextra-export "./" 
+        
+  test_wth_API: 
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    steps:
         
       - name: Run Collection with API
         run: newman run https://api.getpostman.com/collections/7f84364f-cf68-4e21-a6e8-4fff33b385d9?apikey=PMAK-62b558522fc64d315bea82d3-c35f7be4212b36f2bf7709a9e1e55baada
       
       - name: List folder
         run: ls -a
-      
+  Upload_artifact: 
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    steps:
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
