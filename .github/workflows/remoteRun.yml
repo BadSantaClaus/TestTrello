@@ -28,7 +28,7 @@ jobs:
         run: ls -a
         
       - name: Install Htmlextra reporter
-        run: npm install -g newman-reporter-htmlextra
+        run: npm install i -g newman-reporter-htmlextra
         
       - name: Run Collection with CLI
         run: newman run Trello.postman_collection.json -r htmlextra --reporter-htmlextra-export "./" 
