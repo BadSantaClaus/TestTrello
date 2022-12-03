@@ -1588,7 +1588,7 @@
 									"\r",
 									"pm.test(\"Name of the Board validation\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData[1].color).to.eql(\"purple\");\r",
+									"    pm.expect(jsonData[2].color).to.eql(\"purple\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Body contains boards\",() => {\r",
